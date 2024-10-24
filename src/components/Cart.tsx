@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { Minus, Plus, X } from 'lucide-react'
 import useCartStore from '@/store/cartStore'
-import { calculateSubtotal, truncateText } from '@/lib/helper'
+import { Minus, Plus, X } from 'lucide-react'
+import { calculateSubtotal, formatPrice, truncateText } from '@/lib/helper'
 
 export default function Cart() {
   const { items, updateQuantity } = useCartStore((state) => state)
@@ -65,7 +65,7 @@ export default function Cart() {
         <div className="flex items-center justify-between p-4 border-t border-zinc-200">
           <h2 className="text-lg font-semibold">Total</h2>
           <span className="font-bold text-emerald-700">
-            ${subtotal}
+            ${formatPrice(subtotal)}
           </span>
         </div>
         <div className='px-4'>

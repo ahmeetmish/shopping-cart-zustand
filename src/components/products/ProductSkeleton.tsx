@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Product } from "@/types"
 import { MoonStar } from "lucide-react"
+import { formatPrice } from "@/lib/helper"
 import useCartStore from "@/store/cartStore"
 
 export default function ProductSkeleton({ products }: { products: Product[] }) {
@@ -37,7 +38,7 @@ export default function ProductSkeleton({ products }: { products: Product[] }) {
                 </div>
                 <div className="gap-4 min-[400px]:gap-0 flex flex-col min-[400px]:flex-row items-start min-[400px]:items-center justify-between">
                   <span className="text-2xl lg:text-3xl font-bold text-foreground">
-                    ${product.price}
+                    ${formatPrice(product.price)}
                   </span>
                   <button onClick={() => addToCart(product)} className="w-full min-[400px]:w-max text-white bg-emerald-700 hover:bg-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:outline-none transition-colors duration-300">
                     Add to cart
