@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import Header from "@/components/Header";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Shopping Cart with Zustand",
@@ -19,6 +20,10 @@ export default function RootLayout({
       <body
         className={`${inter.className} container scroll-smooth antialiased`}
       >
+        <Toaster
+          position="bottom-center"
+          reverseOrder={false}
+        />
         <Header />
         {children}
       </body>

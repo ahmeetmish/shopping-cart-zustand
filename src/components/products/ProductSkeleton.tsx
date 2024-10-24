@@ -1,8 +1,13 @@
+'use client'
+
 import Image from "next/image"
 import { Product } from "@/types"
 import { MoonStar } from "lucide-react"
+import useCartStore from "@/store/cartStore"
 
 export default function ProductSkeleton({ products }: { products: Product[] }) {
+  const addToCart = useCartStore((state) => state.addToCart)
+
   return (
     <>
       {
@@ -34,7 +39,9 @@ export default function ProductSkeleton({ products }: { products: Product[] }) {
                   <span className="text-2xl lg:text-3xl font-bold text-foreground">
                     ${product.price}
                   </span>
-                  <button className="w-full min-[400px]:w-max text-white bg-emerald-700 hover:bg-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:outline-none transition-colors duration-300">Add to cart</button>
+                  <button onClick={() => addToCart(product)} className="w-full min-[400px]:w-max text-white bg-emerald-700 hover:bg-emerald-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:outline-none transition-colors duration-300">
+                    Add to cart
+                  </button>
                 </div>
               </div>
             </div>
